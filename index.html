@@ -1,125 +1,14 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard Interativo de Dados Públicos</title>
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@700&display=swap" rel="stylesheet">
-</head>
-<body data-page="dashboard">
-  <button class="menu-toggle" aria-label="Abrir menu" tabindex="0" style="display:none;" aria-expanded="false">
-    <span class="bar"></span>
-    <span class="bar"></span>
-    <span class="bar"></span>
-  </button>
-  <nav class="mobile-menu" aria-label="Menu mobile" style="display:none;" data-variant="neo">
-    <div class="mobile-menu-row">
-      <a href="index.html" class="nav-item"><span class="nav-icon">📊</span><span class="nav-label">Dashboard</span></a>
-      <a href="pages/populacao.html" class="nav-item"><span class="nav-icon">👥</span><span class="nav-label">População</span></a>
-    </div>
-    <div class="mobile-menu-row">
-      <a href="pages/economia.html" class="nav-item"><span class="nav-icon">💰</span><span class="nav-label">Economia</span></a>
-      <a href="pages/educacao.html" class="nav-item"><span class="nav-icon">🎓</span><span class="nav-label">Educação</span></a>
-    </div>
-    <div class="mobile-menu-row">
-      <a href="pages/saude.html" class="nav-item"><span class="nav-icon">🩺</span><span class="nav-label">Saúde</span></a>
-      <a href="pages/infraestrutura.html" class="nav-item"><span class="nav-icon">🏗️</span><span class="nav-label">Infraestrutura</span></a>
-    </div>
-    <div class="mobile-menu-row">
-      <a href="pages/energia.html" class="nav-item"><span class="nav-icon">⚡</span><span class="nav-label">Energia</span></a>
-      <a href="pages/mobilidade.html" class="nav-item"><span class="nav-icon">🚉</span><span class="nav-label">Mobilidade</span></a>
-    </div>
-    <div class="mobile-menu-row">
-      <a href="pages/meio-ambiente.html" class="nav-item"><span class="nav-icon">🌱</span><span class="nav-label">Meio Ambiente</span></a>
-    </div>
-  </nav>
-  <header class="header" aria-label="Cabeçalho fixo">
-    <h1 class="logo">
-  <img src="assets/perfil.jpeg" alt="Foto de perfil" class="profile-pic" />
-      Dados Públicos
-      <span class="badge">BRASIL</span>
-    </h1>
-  </header>
-  <aside class="sidebar" aria-label="Navegação de categorias">
-    <nav class="nav-categories">
-      <a href="index.html" class="nav-item active" aria-label="Dashboard Geral">
-        <span class="nav-icon">📊</span><span class="nav-label">Dashboard</span>
-      </a>
-      <a href="pages/populacao.html" class="nav-item" aria-label="População"><span class="nav-icon">👥</span><span class="nav-label">População</span></a>
-      <a href="pages/economia.html" class="nav-item" aria-label="Economia"><span class="nav-icon">💰</span><span class="nav-label">Economia</span></a>
-      <a href="pages/educacao.html" class="nav-item" aria-label="Educação"><span class="nav-icon">🎓</span><span class="nav-label">Educação</span></a>
-      <a href="pages/saude.html" class="nav-item" aria-label="Saúde"><span class="nav-icon">🩺</span><span class="nav-label">Saúde</span></a>
-      <a href="pages/infraestrutura.html" class="nav-item" aria-label="Infraestrutura"><span class="nav-icon">🏗️</span><span class="nav-label">Infraestrutura</span></a>
-      <a href="pages/energia.html" class="nav-item" aria-label="Energia"><span class="nav-icon">⚡</span><span class="nav-label">Energia</span></a>
-      <a href="pages/mobilidade.html" class="nav-item" aria-label="Mobilidade"><span class="nav-icon">🚉</span><span class="nav-label">Mobilidade</span></a>
-      <a href="pages/meio-ambiente.html" class="nav-item" aria-label="Meio Ambiente"><span class="nav-icon">🌱</span><span class="nav-label">Meio Ambiente</span></a>
-    </nav>
-  </aside>
-  <main class="main-content">
-    <!-- Blocos de informação agrupados em 3 -->
-  <div class="info-container" data-aos="fade-up" data-aos-duration="800">
-      <!-- Participação Regional -->
-  <section class="dashboard-info" aria-label="Participação Regional" data-aos="zoom-in" data-aos-delay="150">
-        <div class="info-header"><h2 class="info-title">População por Região</h2></div>
-        <div class="info-chart">
-          <canvas id="regionPieChart" aria-label="Gráfico de pizza das regiões" role="img"></canvas>
-        </div>
-      </section>
-      <!-- Estados mais populosos -->
-  <section class="banner-info" aria-label="Estados mais populosos" data-aos="zoom-in" data-aos-delay="250">
-        <h2 class="banner-title">Top 5 Estados por População</h2>
-        <div class="banner-chart">
-          <canvas id="stateBarChart" aria-label="População por estado"></canvas>
-        </div>
-      </section>
-      <!-- Cards e gráficos principais -->
-  <div class="stack-wrapper" data-aos="fade-up" data-aos-delay="350">
-        <section class="dashboard-cards" aria-label="Cards de dados"></section>
-        <section class="dashboard-charts" aria-label="Gráficos"></section>
-        <div style="width:100%;display:flex;justify-content:flex-end;margin-top:1.2rem;">
-          <button class="export-btn export-img-btn" aria-label="Exportar dashboard" style="min-width:180px;">Exportar Dashboard</button>
-        </div>
-      </div>
-    </div><!-- .info-container -->
-    <div class="ticker-bar" aria-label="Cotações simuladas">
-      <div class="ticker-track">
-  <span class="ticker-item ticker-up">USD/BRL: R$ 5,32 ↗</span>
-  <span class="ticker-item ticker-down">EUR/BRL: R$ 5,78 ↘</span>
-  <span class="ticker-item ticker-up">BTC/USD: $44.200 ↗</span>
-  <span class="ticker-item ticker-down">ETH/USD: $2.350 ↘</span>
-  <span class="ticker-item ticker-up">JPY/BRL: R$ 0,036 ↗</span>
-  <span class="ticker-item ticker-up">GBP/BRL: R$ 6,45 ↗</span>
-  <span class="ticker-item ticker-down">AUD/BRL: R$ 3,42 ↘</span>
-  <span class="ticker-item ticker-up">CAD/BRL: R$ 3,89 ↗</span>
-  <span class="ticker-item ticker-down">CHF/BRL: R$ 5,95 ↘</span>
-  <span class="ticker-item ticker-up">IBOV: 126.850 ↗</span>
-  <!-- duplicados para loop contínuo -->
-  <span class="ticker-item ticker-up">USD/BRL: R$ 5,32 ↗</span>
-  <span class="ticker-item ticker-down">EUR/BRL: R$ 5,78 ↘</span>
-  <span class="ticker-item ticker-up">BTC/USD: $44.200 ↗</span>
-  <span class="ticker-item ticker-down">ETH/USD: $2.350 ↘</span>
-  <span class="ticker-item ticker-up">JPY/BRL: R$ 0,036 ↗</span>
-  <span class="ticker-item ticker-up">GBP/BRL: R$ 6,45 ↗</span>
-  <span class="ticker-item ticker-down">AUD/BRL: R$ 3,42 ↘</span>
-  <span class="ticker-item ticker-up">CAD/BRL: R$ 3,89 ↗</span>
-  <span class="ticker-item ticker-down">CHF/BRL: R$ 5,95 ↘</span>
-  <span class="ticker-item ticker-up">IBOV: 126.850 ↗</span>
-      </div>
-    </div>
-    <footer class="site-footer" role="contentinfo">Desenvolvido por Eric Campos</footer>
-  </main>
-  </main>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>document.addEventListener('DOMContentLoaded',()=>{ if(window.AOS) AOS.init({ once:true, offset: 60 }); });</script>
-  <script type="module" src="js/common.js"></script>
-  <script type="module" src="js/main.js"></script>
-  <script type="module" src="js/modules/homeCharts.js"></script>
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Economic and social indicators of Brazil, read live from the official IBGE and Banco Central APIs." />
+    <title>Brazil Open Data Dashboard</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='8' width='3' height='7' fill='%23257de0'/%3E%3Crect x='6.5' y='4' width='3' height='11' fill='%23257de0'/%3E%3Crect x='12' y='1' width='3' height='14' fill='%23257de0'/%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
